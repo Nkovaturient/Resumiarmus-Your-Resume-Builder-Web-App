@@ -18,8 +18,6 @@ import ExpressError from './utils/ExpressError.js';
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.set('view engine', 'ejs');
-// app.set("views", path.join(__dirname, "views"));
 
 app.use('/cvi', authRoutes);
 app.use('/cvi/dashboard', verifyToken, dashboardRoute);
