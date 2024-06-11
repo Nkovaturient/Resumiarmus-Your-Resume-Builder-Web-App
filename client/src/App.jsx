@@ -1,11 +1,23 @@
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+// import { ThemeProvider } from '@material-ui/styles';
+import MainRouter from './MainRouter';
+// import theme from './theme';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/ConfigureStore.jsx';
 
-import React from 'react'
+const store = ConfigureStore();
 
 const App = () => {
-  return (
-    <div className='text-3xl text-center text-red-700'
-    >Welcome to Vite with TailwindCSS and React </div>
-  )
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                
+                    <MainRouter />
+                
+            </BrowserRouter>
+        </Provider>
+    )
 }
 
-export default App
+export default App;
