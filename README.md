@@ -1,4 +1,4 @@
-# Resumiarumus- Your Resume Builder Web App 🗒️ 🎶 📄
+# Resumiarmus- Your Resume Builder Web App 🗒️ 🎶 📄
 - Cast *Expelliarmus* 🌟 on your next opponent and seize that job just by crystallizing custom/inbuilt- resume from a list of 
 curated template options, designed and developed efficiently just to make you job-ready! ☄️
 
