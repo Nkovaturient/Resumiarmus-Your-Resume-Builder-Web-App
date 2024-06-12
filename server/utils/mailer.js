@@ -2,13 +2,13 @@ import nodemailer from 'nodemailer';
 import {config} from '../config/config.js';
 import {google} from 'googleapis';
 
-const sendMail=  () => {
+const sendMail=  (sender, recipient, subject, msg) => {
 
   const message = {
-    from: config.MAIL_SENDER, // Sender address 
-    to: "taev29101@gmail.com, demat934@gmail.com",    // List of recipients
-    subject: "Hello wizard! 🦉", // Subject line
-    html: '<em>I hope this message gets through!</em> <p>Your OTP for verification : 6579</p>'
+    from: sender, // Sender address 
+    to: recipient,    // List of recipients
+    subject: subject, // Subject line
+    html: msg //message
   }; 
 
   const createTransporter = async () => {
