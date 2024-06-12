@@ -93,7 +93,7 @@ export const Login = async (req, res) => {
     }
 
 
-    // create a jwt token
+    // create a jwt token-while login in order to verify routing to dashboard routes
     const token = jwt.sign(
         // payload
         {
@@ -109,7 +109,7 @@ export const Login = async (req, res) => {
     );
 
 
-    res.header("auth-token", token).status(200).json({
+    res.header("auth-token", token).status(200).json({ //verifyToken mw accessing the token thru req.header
         error: null,
         token
     });

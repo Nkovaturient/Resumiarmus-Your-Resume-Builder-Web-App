@@ -29,7 +29,7 @@ export const getMany=async(req,res)=>{
 export const createOne=async(req,res)=>{
     const createdBy = req.body.user.id;
     try {
-      const doc = await Resume.create({ ...req.body.data, createdBy });
+      const doc = await Resume.create({ ...req.body.data, createdBy }); //data from form
       res.status(201).json({ data: doc });
     } catch (e) {
       console.error(e);
@@ -44,7 +44,7 @@ export const updateOne=async(req,res)=>{
           createdBy: req.body.user.id,
           _id: req.params.id
         },
-        req.body.data,
+        req.body.data, //updating with edited details
         { new: true }
       )
       .lean(true)

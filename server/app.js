@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import path from 'path';
 import bodyParser from 'body-parser';
 
 import authRoutes from './routes/auth.js';
@@ -106,9 +105,9 @@ app.use((err, req, res,next)=>{
 
 main()
 .then(() => {
-    console.log('Database Connected...');
+    console.log('Pinged to Database. Connected Successfully! ');
     app.listen(process.env.PORT, () => {
-        console.log(`Server has started on port ${process.env.PORT}...`);
+        console.log(`Listening on port ${process.env.PORT}...`);
     });
 }).catch(err => {
     console.error(err);

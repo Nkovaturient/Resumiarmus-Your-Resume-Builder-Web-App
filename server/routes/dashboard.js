@@ -10,7 +10,7 @@ router.route('/user/:id')
 .put(wrapAsync(updateUser));
 
 router.route('/resume')
-.post(wrapAsync(createOne));
+.post(wrapAsync(createOne)); //render resume form
 
 router.route('/resume/:id')
 .get(wrapAsync(getOne))
