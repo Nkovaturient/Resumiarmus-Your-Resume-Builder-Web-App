@@ -1,0 +1,37 @@
+import axios from 'axios'
+import { config } from '../config/config.js'
+import html2canvas from 'html2canvas'
+
+import {
+    SET_DATA_SUCCESS,
+    SET_DATA_BLANK,
+    FETCH_DATA_REQUEST,
+    FETCH_DATA_SUCCESS,
+    FETCH_DATA_FAILED,
+    POST_DATA_REQUEST,
+    POST_DATA_SUCCESS,
+    POST_DATA_FAILED,
+    UPDATE_DATA_REQUEST,
+    UPDATE_DATA_SUCCESS,
+    UPDATE_DATA_FAILED,
+    LOG_IN_REQUEST,
+    LOG_IN_SUCCESS,
+    LOG_IN_FAILED,
+    LOG_OUT_REQUEST,
+    LOG_OUT_SUCCESS,
+    LOG_OUT_FAILED,
+    RENDER_PREVIEW_SUCCESS,
+    UPDATE_USER_REQUEST,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAILED,
+    DELETE_DATA_REQUEST,
+    DELETE_DATA_SUCCESS,
+    DELETE_DATA_FAILED,
+    SET_TITLE,
+    SET_PERSONAL_DETAILS,
+    UPDATE_DATA
+} from './actionTypes'
+
+export const loginCheck=()=> {
+    
+}

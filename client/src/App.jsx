@@ -1,17 +1,29 @@
 import React from 'react';
-import { Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import ResumeTemplates from './pages/ResumeTemplates/ResumeTemplates';
 
 
 
 const App = () => {
     return (
-        <Provider store={store}>
-            <Router>
-                <Routes  />
-            </Router>
+        <>
+        <div className="app">
+            <Navbar />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path= '/cvi/dashboard/resume-templates' element={<ResumeTemplates />} />
+
+            </Routes>
+            </div>
+            <Footer/>
                 
           
-        </Provider>
+            </> 
     )
 }
 

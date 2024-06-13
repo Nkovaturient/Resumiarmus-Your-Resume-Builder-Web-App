@@ -1,0 +1,9 @@
+.templates-list{
+    margin-top: 3.5rem;
+    /* width: 70%; */
+    /* background-color: yellow; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-evenly;
+}
