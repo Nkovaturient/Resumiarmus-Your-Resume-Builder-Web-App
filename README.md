@@ -16,7 +16,7 @@ curated template options, designed and developed efficiently just to make you jo
 - **Reactjs**: Optimising Frontend- UI/UX with modular and well-structured components, routing, and redux management. ⚛️
 - **JavaScript**: Driving interactivity and functionality. 🏄
 - **jsonwebtokens**: Ensuring secure authentication and seamless user routing across webpages with the help of defined jwt token session . 🛂
-- **becrypt**: Robust, solid security by hashing and salting passwords while user registration. 🔐
+- **bcrypt**: Robust, solid security by hashing and salting passwords while user registration. 🔐
 - **nodemailer**: zero-dependency module for sending emails to users from server easily. 📫
 
 
