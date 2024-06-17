@@ -1,0 +1,61 @@
+.build-resume{
+    /* background-color: #44fec1; */
+    /* min-height: 80vh; */
+    /* background-color: aqua; */
+    margin: 3.1rem 0rem;
+    border: 3.1px solid #49557e;
+    border-radius: 14px;
+    padding: 1.1rem;
+}
+.build-resume-container{
+    box-shadow: 0 20px 20px 0 #4407a7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 2.5rem;
+
+}
+.build-resume-steps{
+    /* background-color: yellow; */
+    text-align: center;
+}
+.build-resume-steps button{
+    margin-left: 2.4rem;
+    border: none;
+    font-weight: 500;
+    color: #0d0d0d;
+    padding: 1vw 2.3vw;
+    font-size: max(1vw, 13px);
+    cursor: pointer;
+    color: #49557e;
+    box-shadow: 0 15px 15px 0 #4407a7;
+    transition: 0.3s ease-in;
+    
+}
+.build-resume .stepper{
+    background-color: red;
+    width: 70%;
+}
+.build-resume .steps-container{
+    
+    content: 'visible';
+}
+.main{
+    /* background-color: #76f3e9; */
+}
+.main .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.build-resume-form{
+    border: 3px solid purple;
+    margin: 2.5rem 2.1rem;
+    box-shadow: 0 15px 15px 0 #4407a7;
+}
+.form-active{
+    color: #fff;
+    background-color: #76f3e9;
+}

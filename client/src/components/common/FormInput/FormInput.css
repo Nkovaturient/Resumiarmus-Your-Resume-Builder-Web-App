@@ -1,0 +1,33 @@
+
+.form-control {
+    position: relative;
+    margin: 20px 0;
+  }
+  
+  .textarea-label {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    background: white;
+    padding: 0 5px;
+    color: grey;
+    font-size: 16px;
+    transition: all 0.2s ease;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  textarea:focus + .textarea-label,
+  textarea.shrink + .textarea-label,
+  textarea:not(:placeholder-shown) + .textarea-label {
+    top: -10px;
+    left: 10px;
+    font-size: 14px;
+    color: red;
+  }
+  

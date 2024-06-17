@@ -32,7 +32,7 @@
    line-height: 0.75cm;
    margin-top: 1.5rem;
 }
-.templates-header-text button{
+.templates-header-text .btn{
     margin-top: 2.5rem;
     border: none;
     font-weight: 500;
@@ -44,7 +44,7 @@
     box-shadow: 0 10px 15px 0 #49557e;
     transition: 0.3s ease-in;
 }
-.templates-header-text button:hover{
+.templates-header-text .btn:hover{
     color: beige;
     background-color: #49557e;
     border-radius: 50px;
@@ -55,4 +55,52 @@
     background-size: cover;
     background-position: center;
 
+}
+
+.create-templates{
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: space-evenly;
+    height: 21vw;
+    padding: 2.1rem 0rem;
+    margin: 4.75rem 0rem;
+}
+.create-templates-img{
+    width: 40%;
+    background-image: url('../../assets/temp.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 12px 20px 0 #ff6c04;
+}
+.create-templates-text{
+    width: 40%;
+    text-align: center;
+    color: #49557e;
+}
+.create-templates-text h3{
+    font-weight: 600;
+    font-size: max(2.1vw, 20px);
+    margin-bottom: 2.1rem ;
+}
+.create-templates-text li{
+    list-style-type:disc;
+   font-weight: 500; 
+   font-size: max(1.1vw, 15px);
+}
+ .resume-btn{
+    margin-top: 2.5rem;
+    border: none;
+    font-weight: 500;
+    color: #0d0d0d;
+    padding: 1vw 2.3vw;
+    background-color: #ff6c04;
+    font-size: max(1vw, 13px);
+    cursor: pointer;
+    box-shadow: 0 10px 15px 0 #49557e;
+    transition: 0.3s ease-in;
+}
+.resume-btn:hover{
+    color: beige;
+    background-color: #4c11aa;
+    border-radius: 50px;
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWandMagic, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
   return (
@@ -9,10 +11,10 @@ const Header = () => {
             <p>Boost your career chasing</p>
             <h3>Land your dream job with already made <span>Eye catchy Resumes.</span></h3>
             <p>Create awesome job-tailored resumes with one of our template in just few seconds.</p>
-            <button><Link to={'/cvi/dashboard/resume-templates'}>Create Resume for free</Link></button>
+            <button><Link to={'/resume-templates'}>Create Resume for free <FontAwesomeIcon icon={faWandMagicSparkles}/></Link></button>
         </div>
         <div className="header-img">
-            <img src='../../../public/header.jpg' alt="header" />
+            <img src='../../../header.jpg' alt="header" />
         </div>
         </div>
   )

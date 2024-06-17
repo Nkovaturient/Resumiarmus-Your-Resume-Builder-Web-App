@@ -1,0 +1,27 @@
+.personal-content{
+    background-color: yellow;
+    margin: 2.4rem 0rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: #49557e;
+    /* min-height: 30vh; */
+}
+.personal-head{
+    text-align: center;
+    border: 2px solid #5f13c2;
+    color: #fff;
+    background-color: #5f13c2;
+    padding: 1.2rem;
+    margin: 0.75rem 0rem;
+}
+.personal-form{
+    display: grid;
+    grid-template-rows: auto;
+
+    /* grid-template-rows: 3ch auto minmax(10px, 60px); */
+    /* grid-template-columns: 8ch auto; */
+    gap: 20px;
+}
