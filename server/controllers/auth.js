@@ -6,6 +6,7 @@ import { config } from '../config/config.js';
 import jwt from 'jsonwebtoken';
 import sendMail from '../utils/mailer.js';
 
+
 export const Sign = async (req, res) => {
 
     // validate the incoming data
@@ -29,7 +30,7 @@ export const Sign = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password, salt);
 
-    const _user = new User({
+    const user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -38,14 +39,9 @@ export const Sign = async (req, res) => {
 
     // save user to db
     try {
-        _user.save((error, data) => {
-            if (error) {
-                console.error(error);
-                return res.status(400).json({
-                    message: 'Something went wrong...',
-                    error: error
-                });
-            }
+       await user.save()
+        .then((data, error) => {
+            
             if (data) {
                 return res.status(200).json({
                     message: 'SignUp Successfull',
@@ -57,9 +53,20 @@ export const Sign = async (req, res) => {
                     }
                 });
             }
-        });
-    } catch (error) {
-        res.status(400).json({ error });
+            if (error) {
+                console.error(error);
+                return res.status(400).json({
+                    message: 'Something went wrong...',
+                    error: error
+                });
+            }
+        }) 
+        .catch ((error) => {
+          return  res.status(400).json({ error });
+        })
+    } catch(err){
+        console.log('Error in signing up!', err);
+
     }
 
 
@@ -116,6 +123,19 @@ export const Login = async (req, res) => {
 
 }
 
+export const Logout=async(req, res) => {
+    try{
+        const token=req.header.authorization
+        res.header("auth-token", token).status(200).json({ //verifyToken mw accessing the token thru req.header
+            error: null,
+            token
+        });
+       console.log('logout--', token);
+
+    } catch(err){
+        console.log('logout failure', err.message);
+    }
+}
 
 // passsword forgot middleware
 
@@ -155,7 +175,7 @@ export const ForgotPassword = async (req, res) => {
     try {
         sendMail(config.MAIL_SENDER, user.email, "PASSWORD RESET", mailHtmlContent);
     } catch (error) {
-        return res.status(500).json({ error: err });
+        return res.status(500).json({ error: error.message });
     }
 
     return res.status(200).json({ message: "Check mail for password reset link" });
