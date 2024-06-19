@@ -2,26 +2,63 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import MongoStore from 'connect-mongo';
 
 import authRoutes from './routes/auth.js';
 import dashboardRoute from './routes/dashboard.js';
 import verifyToken from './utils/verifyToken.js';
-import nodemailer from 'nodemailer'; 
-import {google} from 'googleapis';
-import sendMail from './utils/mailer.js';
-import createTransporter from './utils/mailer.js';
 import env from 'dotenv';
 env.config();
 
 const app = express();
-
-import Resume from './models/resume.js';
+import session from 'express-session';
 import ExpressError from './utils/ExpressError.js';
-import { config } from './config/config.js';
-// import { wrapAsync } from './utils/wrapAsync.js';
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+main()
+.then(() => {
+    console.log('Pinged to Database. Connected Successfully! ');
+    app.listen(process.env.PORT, () => {
+        console.log(`Listening on port ${process.env.PORT}...`);
+    });
+}).catch(err => {
+    console.error(err);
+});
+ 
+
+async function main(){
+    await mongoose.connect(process.env.DB_URL);
+}
+
+const store= MongoStore.create({
+    mongoUrl: process.env.DB_URL, //or 'mongoUrl/dbUrl, if local/cloudAtlas
+    crypto:{
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600, 
+});
+
+store.on("error", ()=>{
+    console.log("ERROR IN MONGO SESSION STORE!", err);
+});
+   
+const sessionOptions= {
+    store,
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true
+    },
+};
+
+
+app.use(session(sessionOptions));
 
 app.use('/cvi', authRoutes);
 app.use('/cvi/dashboard', verifyToken, dashboardRoute);
@@ -40,21 +77,7 @@ app.use((err, req, res,next)=>{
     res.status(status).render('pages/error.ejs', {err});
 })
 
-main()
-.then(() => {
-    console.log('Pinged to Database. Connected Successfully! ');
-    app.listen(process.env.PORT, () => {
-        console.log(`Listening on port ${process.env.PORT}...`);
-    });
-}).catch(err => {
-    console.error(err);
-});
 
-
-async function main(){
-    await mongoose.connect(process.env.MONGO_URL);
-}
-   
 
 /*Testing db and Debug */
 // const newUser= new User({
