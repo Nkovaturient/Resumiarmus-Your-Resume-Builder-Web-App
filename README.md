@@ -18,6 +18,17 @@ curated template options, designed and developed efficiently just to make you jo
 - **jsonwebtokens**: Ensuring secure authentication and seamless user routing across webpages with the help of defined jwt token session . 🛂
 - **bcrypt**: Robust, solid security by hashing and salting passwords while user registration. 🔐
 - **nodemailer**: zero-dependency module for sending emails to users from server easily. 📫
+- **notistack** : attractive notifications provider api library for better user-communication and updation 🔔
 
+# Frontend Updates  ⚛️ 📊
+## After long hours of consistency and error handling, I have revised and setup my frontend with react-vite and redux libraries 🗽 🥳
+-  **Redux**-state management library handling entire
+    - backend-authentication, fetching data, user details updation, CRUD operations on resumes and user models efficiently :
+- utilising Reducer, actions and slice of react-redux 📃
+- Achieving **Modularity** : crux of programming by breaking down + structuring each section and logic into various components 📔
 
-# working on Frontend 💻...updates soon! ⚛️
+# To Resolve: ⏲️
+- Reset password component- to handle configuration in jwt tokens as per jsonwebtoken library principles
+- while editing the savedResumes of user, achievements section couldnt be mapped-hence, yet to revise the setup!
+
+Happy Coding! 😄💙
