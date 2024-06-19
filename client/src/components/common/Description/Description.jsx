@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Description.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
-
+import './Description.css'
 
 
 const Description = ({ sectionName, index, name, section }) => {
@@ -39,13 +39,12 @@ const Description = ({ sectionName, index, name, section }) => {
     <>
     {
         lines.map((text, idx)=>{
-            <div className='box'>
-                <textarea name={idx} id={idx} 
+          return  <div className='box'>
+                <input name={idx} id={idx} 
                 value={text} 
                 onChange={handleChange}
-                >
-                    {`Description Line ${idx + 1}`}
-                </textarea>
+                placeholder={`Description Line ${idx + 1}`}
+                />
                 {
                     (errorText[idx])? <div className="alert">{errorText[idx]}</div> : " "
                 }

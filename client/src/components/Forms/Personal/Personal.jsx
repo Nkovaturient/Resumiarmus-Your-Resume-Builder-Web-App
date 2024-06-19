@@ -3,16 +3,20 @@ import {connect} from 'react-redux'
 import { setPersonalDetails } from '../../../redux/actionControllers'
 import './Personal.css'
 import { useSnackbar } from 'notistack'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExternalLink, faLink, faLinkSlash, faMailBulk, faMailForward, faMessage, faPhoneAlt, faUser, faUserAlt, faUserCheck, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+ 
 
 const Personal = (props) => {
 
     const {enqueueSnackbar}=useSnackbar;
 
+
     const regex = {
-        email: '/^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', //eslint-disable-line'
-        name: '/^[A-Z][a-zA-Z]{1,}$/',
-        website: '/(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/', //eslint-disable-line
-        phone: '/^\d{6,}$/',
+        email: /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, //eslint-disable-line'
+        name: /^[A-Z][a-zA-Z]{1,}$/,
+        website: /(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, //eslint-disable-line
+        phone: /^\d{6,}$/,
     }
 
     const [errorText, setErrorText] = useState({
@@ -32,7 +36,7 @@ const Personal = (props) => {
         if (name === 'email') {
             if (!input.match(regex.email))
                 setErrorText({ ...errorText, [name]: 'Invalid Email Id' })
-            else setErrorText({ ...errorText, [name]: 'valid' })
+            else setErrorText({ ...errorText, [name]: '' })
         }
         if (name === 'phone') {
             if (!input.match(regex.phone))
@@ -59,62 +63,68 @@ const Personal = (props) => {
         <>
          <div className="personal-content">
             <div className="personal-head">
-                <h1 className='flex-1 w-64'>Personal Information</h1>
+                <h1 className='flex-1 w-64'><FontAwesomeIcon icon={faUserCircle}/> Personal Information</h1>
             
             </div>
-            <div className="personal-form">
-                <label htmlFor="firstName">First Name</label>
+            <form className="personal-form">
+                <div className="form-group">
+                <label htmlFor="firstName"><FontAwesomeIcon icon={faUserAlt}/> First Name</label><br />
                 <input type="text" id='firstName' 
                 name='firstName'
                 value={props.resume.personal.firstName}
                 placeholder='Jennie'
-                error={errorText.firstName}
                 onChange={handleChange}
-                required/>
-                <label htmlFor="lastName">Last Name</label>
+                required />
+                
+                
+                <label htmlFor="lastName">Last Name</label><br />
                 <input type="text" id='lastName' name='lastName' placeholder='Doe'
                 value={props.resume.personal.lastName}
-                error={errorText.lastName}
+                // error={errorText.lastName}
                 onChange={handleChange}
                 required/>
                 {
-                    (errorText.firstName)? <div className="alert">{errorText.firstName}</div> : null
+                    (errorText.firstName)? <div className="alert">{errorText.firstName}</div> : ''
                 }
+                
                 {
-                    (errorText.lastName)? ' ' : <div className="alert">{errorText.lastName}</div> 
+                    (errorText.lastName)? <div className="alert">{errorText.lastName}</div> : null  
                 }
-                <label htmlFor="email">Email</label>
+                </div>
+                <div className="form-group">
+                <label htmlFor="email"><FontAwesomeIcon icon={faMailBulk}/> Email</label>
                 <input type="email" id='email' name='email'
                  placeholder='jennieDoe@yahoo.in'
                 value={props.resume.personal.email}
                 autoComplete='email'
-                error={errorText.email}
                 onChange={handleChange}
                 required />
-                {
-                    (errorText.email)? '' : <div className="alert">{errorText.email}</div>
-                }
-                <label htmlFor="phone">Phone No.</label>
+    
+                <label htmlFor="phone"> <FontAwesomeIcon icon={faPhoneAlt}/> Phone No.</label>
                 <input  type='tel' id='phone' name='phone' placeholder='9214985406'
                 value={props.resume.personal.phone}
                 autoComplete='tel'
-                error={errorText.phone}
                 onChange={handleChange}
                 required/>
-                {
-                    (errorText.phone)? '' : <div className="alert">{errorText.phone}</div>
+                 {
+                    (errorText.email)? <div className="alert">{errorText.email}</div> : null
                 }
-                <label htmlFor="website">Professional Profile/Website URL/Link</label>
-                <input type="url" id='website' name='website' placeholder='jennieDoe.dev' 
+                {
+                    (errorText.phone)? <div className="alert">{errorText.phone}</div> : null
+                }
+                </div>
+                <div className="form-group">
+                <label htmlFor="website"><FontAwesomeIcon icon={faLink}/> Professional Profile/Website URL/Link</label>
+                <input type="url" id='website' name='website' placeholder='www.jennieDoe.dev/https://jennie.in' 
                 value={props.resume.personal.website}
                 autoComplete='website'
-                error={errorText.website}
                 onChange={handleChange}
                 required />
                 {
-                    (errorText.website)? '' : <div className="alert">{errorText.website}</div>
+                    (errorText.website)? <div className="alert">{errorText.website}</div> : null
                 }
-            </div>
+                </div>
+            </form>
          </div>
         </>
     );

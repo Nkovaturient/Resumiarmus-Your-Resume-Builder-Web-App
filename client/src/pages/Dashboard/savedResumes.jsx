@@ -4,25 +4,29 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchData, setData, deleteData } from '../../redux/actionControllers';
 import { connect } from 'react-redux';
-
+import './Dashboard.css'
+import {  useSnackbar } from 'notistack';
 
 const Dashboard = (props) => {
  const navigate=useNavigate();
+ const {enqueueSnackbar}=useSnackbar();
 
   useEffect(() => {
       props.fetchData(props.token, function () {
-          //history.push("/builder")
+          // navigate("/builder")
       })
   }, []) //eslint-disable-line
 
   const handleEdit = (index) => {
       props.setData(index, function () {
-          navigate("/builder")
+        enqueueSnackbar("you are editing details for this resume", {variant: 'info'})
+          navigate("/builder", index)
       })
   };
 
   const callDelete = async (index) => {
       await props.deleteData(props.token, props.resume.data[index])
+      enqueueSnackbar("Deleted successfully", {variant: 'success'})
   }
 
   const handleDelete = (index) => {
@@ -30,7 +34,12 @@ const Dashboard = (props) => {
           .then(() => {
               props.fetchData(props.token, function () {
                   //history.push("/builder")  
+                  
               })
+          })
+          .catch((err) => {
+            console.log('saved error', err);
+            enqueueSnackbar("Couldnt delete the resume. Try after some time!", {variant: 'error'})
           })
   }
 
@@ -42,7 +51,7 @@ const Dashboard = (props) => {
         <div className="container">
           {
             (props.resume.data.length) && props.resume.data.map((item, id) => {
-              <div className="data-box" key={id}>
+            return  <div className="data-box" key={id}>
                 <div className="data-card">
                   
                   <div className="card-content">
@@ -50,8 +59,8 @@ const Dashboard = (props) => {
                   </div>
                   
                   <div className="card-actions">
-                    <button className='btn' onClick={() => {handleEdit}}>Edit <FontAwesomeIcon icon={faFileEdit}/></button>
-                    <button className='btn' onClick={() => {handleDelete}}>Delete <FontAwesomeIcon icon={faDeleteLeft}/></button>
+                    <button className='btn' onClick={() => {handleEdit(id)}}>Edit <FontAwesomeIcon icon={faFileEdit}/></button>
+                    <button className='btn' onClick={() => {handleDelete(id)}}>Delete <FontAwesomeIcon icon={faDeleteLeft}/></button>
                   </div>
                   
                 </div>

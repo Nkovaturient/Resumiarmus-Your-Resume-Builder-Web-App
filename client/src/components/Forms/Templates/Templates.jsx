@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import customTemplates from '../../Templates/CustomTemplates'
 import { useNavigate } from 'react-router-dom';
 import './Templates.css'
+import { enqueueSnackbar } from 'notistack';
 
 
 const Templates = (props) => {
@@ -21,6 +22,7 @@ const Templates = (props) => {
         const { value } = e.target;
         validateInput(value)
         props.setTitle(value);
+        
 
         const newData = { ...props.resume.data, title: value }
         props.updateResumeData(newData);
@@ -30,8 +32,16 @@ const Templates = (props) => {
     const handleClick = (template) => {
         props.resume.template = template
         props.resume.data.template = template
-        const update = 'update'
-        navigate(`/${template}`, update)
+        const update = 'update';
+        enqueueSnackbar(`updated your resume on ${template}! click to generate`, {variant: 'info'});
+        console.log(`updated resume on ${template}`);
+        // navigate(`/${template}`, update)
+    }
+    const handlePreview=(template) => {
+        props.resume.template = template
+        props.resume.data.template = template
+        enqueueSnackbar("Here is your Resume Preview", {variant: 'success'})
+        navigate(`/${template}`)
     }
 
   return (
@@ -44,13 +54,15 @@ const Templates = (props) => {
             <input type="text" name='title' id='title' 
              onChange={handleChange}
              value={props.resume.data.title}
+             placeholder='click on the btn'
               />
         </div>
         { (errorText)? <p>{errorText}</p> : ''}
         {
            customTemplates.map((template, index)=>{
             return <div className="item-btn" key={index}>
-                <button onClick={() => handleClick(template)}>{template}</button>
+                <button className='btn' onClick={() => handleClick(template)}>{template}</button>
+                {/* <button className='btn preview-btn' onClick={()=> handlePreview(template)}>Preview</button> */}
             </div>
            }) 
         }

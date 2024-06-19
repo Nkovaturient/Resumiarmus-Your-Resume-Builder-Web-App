@@ -140,8 +140,10 @@ export const Logout=async(req, res) => {
 // passsword forgot middleware
 
 export const ForgotPassword = async (req, res) => {
+    try {
 
     const user = await User.findOne({ email: req.body.email }).exec();
+    console.log('user=', user);
 
     if (!user) {
         return res.status(400).json({ error: "User doesn't exists" });
@@ -168,14 +170,14 @@ export const ForgotPassword = async (req, res) => {
     <h3>Password Reset</h3>
     <br>
     <p>Here is your password reset link</p>
-   <p>${config.CLIENT_URL}/password/reset?token=${token}</p>
+   <p>http://localhost:${config.CLIENT_URL}/password/reset?token=${token}</p>
 
     `;
 
-    try {
-        sendMail(config.MAIL_SENDER, user.email, "PASSWORD RESET", mailHtmlContent);
+    
+        sendMail(config.MAIL_SENDER, user.email, "Resumiarmus-PASSWORD RESET", mailHtmlContent);
     } catch (error) {
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: `sendMail error-- ${error.message}` });
     }
 
     return res.status(200).json({ message: "Check mail for password reset link" });
@@ -202,7 +204,8 @@ export const ResetPassword = async (req, res) => {
     const updatedPassword = await bcrypt.hash(req.body.password, salt);
 
     try {
-        await User.findOneAndUpdate({ email: req.body.email }, { password: updatedPassword });
+       const updatedUserpass= await User.findOneAndUpdate({ email: req.body.email }, { password: updatedPassword });
+       console.log('updates password=', updatedUserpass);
     } catch (error) {
         return res.status(400).json({ error: "Update Failed" });
     }

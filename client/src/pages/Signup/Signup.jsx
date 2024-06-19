@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
 
-export default function Signup() {
+export default function Signup(props) {
   
     const navigate= useNavigate();
     const {enqueueSnackbar}=useSnackbar();
@@ -58,9 +58,18 @@ export default function Signup() {
 
   const goto = (res, user) => {
       if (res.status === 200) {
-        enqueueSnackbar("G'day Mate! Ready to wear your wizard Hat? LogIn", {variant: 'warning'})
-          navigate("/login", user)
+        enqueueSnackbar("G'day Mate! Ready to wear your wizard Hat? LogIn", {variant: 'success'})
+          navigate("/login", user) //res.user
       }
+      
+      if (props.resume.data && props.resume._id) {
+        props.updateData(token, props.resume);
+        enqueueSnackbar('Your resume is ready! ', { variant: 'success' });
+        navigate('/dashboard')
+    }
+    else if (token) {
+        props.postData(token, props.resume)
+    }
   }
 
   const create = async (user) => {
@@ -73,7 +82,8 @@ export default function Signup() {
               body: JSON.stringify(user)
           })
           let res = await response.json()
-          console.log(res)
+          console.log(res);
+          enqueueSnackbar(`Hello ${res.user.firstName}! Lets log you in!`, {variant: 'success'})
           goto(response, res.user)
           return response
       } catch (err) {

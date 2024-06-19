@@ -1,0 +1,32 @@
+.form-section{
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    
+    width: 90%;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 2.1rem;
+    margin-left: 2.1rem;
+}
+
+.btn{
+    margin: 1.1rem 0rem 2.1rem 2.1rem;
+    border: none;
+    font-weight: 600;
+    color: #0d0d0d;
+    padding: 1vw 2.3vw;
+    background-color: #ff6c04;
+    font-size: max(1vw, 13px);
+    cursor: pointer;
+    box-shadow: 0 10px 15px 0 #49557e;
+    transition: 0.3s ease-in;
+}
+.btn:hover{
+    color: beige;
+    background-color: #4c11aa;
+    border-radius: 50px;
+
+}

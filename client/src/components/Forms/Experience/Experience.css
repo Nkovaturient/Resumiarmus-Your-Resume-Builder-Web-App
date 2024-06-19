@@ -1,0 +1,13 @@
+.experience h6{
+    display: inline;
+    border: 4px solid #fe6c04;
+    background-color: #fe6c04;
+    color: #0d0d0d;
+    font-size: max(1.5vw, 15px);
+    font-weight: 600;
+    text-align: center;
+    margin: 1.2rem 0rem;
+    padding: 8px 0;
+    white-space: nowrap;
+
+}

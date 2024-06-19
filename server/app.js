@@ -6,6 +6,10 @@ import bodyParser from 'body-parser';
 import authRoutes from './routes/auth.js';
 import dashboardRoute from './routes/dashboard.js';
 import verifyToken from './utils/verifyToken.js';
+import nodemailer from 'nodemailer'; 
+import {google} from 'googleapis';
+import sendMail from './utils/mailer.js';
+import createTransporter from './utils/mailer.js';
 import env from 'dotenv';
 env.config();
 
@@ -13,6 +17,7 @@ const app = express();
 
 import Resume from './models/resume.js';
 import ExpressError from './utils/ExpressError.js';
+import { config } from './config/config.js';
 // import { wrapAsync } from './utils/wrapAsync.js';
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,74 +30,6 @@ app.get("/home", (req,res)=>{
     res.send("Cast Resumiarmus on your nxt opponent!");
 });
 
-app.get("/testing", async(req,res)=>{
-    const newResume= new Resume({
-        title: 'Ruby Jane Kim',
-        template: 'BlueBlack',
-        personal: {
-            firstName: 'Jennie',
-            lastName: 'Kim',
-            phone: '+2355690457',
-            email: 'rubyjane@blackpink.in',
-            website: 'bpvenom.in',
-        },
-        education: [
-            {
-                university: 'seoul university',
-                degree: 'Art of Aesthetics',
-                startDate: '22 Sep 2016',
-                endDate: '17 Aug 2019',
-                gpa: '8.75'
-            }
-        ],
-        experience: [
-            {
-                title: 'Ruby Jane',
-                organisation: 'Blackpink',
-                startDate: '9 Dec 2018',
-                endDate:'ongoing',
-                description: 'Njoying my lifeabouts in pursuing the art of aesthetics in my life.'
-            },
-        ],
-        skills: [
-            {
-                skillName: 'Ambidextrous',
-                keywords: '#Dancer, #bp, #moon'
-            },
-            {
-                skillName: 'Hip-Hop Dancer',
-                keywords: '#Dance, #heartful'
-            }
-        ],
-        projects: [{
-            projectName: 'Coachella Tour',
-            keywords: '#rock, #worth, #blast',
-            projectDescription: [ 'Pink venom Starlight', 'Moonlight-You and me' ],
-            projectLink: 'www.blackpinkofficial.in'
-        }],
-        achievements: [
-            {
-                title: 'Best Dancer Award of the Year 2022',
-                date: '22 January 2024',
-                organisation: 'US Cabinet of Culture',
-                description: ['member of blackpink community', 'seoul kpop dancer A1'],
-            }
-        ],
-        createdBy: '665418c5c5735151089e2b6e',
-
-    });
-
-    await newResume.save()
-    .then((res)=>{
-        console.log(res);
-    })
-    .catch((err)=>{
-        console.log("uncaught error", err.message);
-    });
-
-    res.send("Resume generated successfully!");
-
-});
 
 app.all("*", (req,res,next)=>{
    next(new ExpressError(404, "Page not found!") );
@@ -119,7 +56,7 @@ async function main(){
 }
    
 
-/*Testing and Debug */
+/*Testing db and Debug */
 // const newUser= new User({
 //     firstName: 'Jennie',
 //     lastName: 'Doe',
@@ -127,3 +64,71 @@ async function main(){
 //     password: "inyour@rea",
 // });
 // await newUser.save()
+// app.get("/testing", async(req,res)=>{
+//     const newResume= new Resume({
+//         title: 'Ruby Jane Kim',
+//         template: 'BlueBlack',
+//         personal: {
+//             firstName: 'Jennie',
+//             lastName: 'Kim',
+//             phone: '+2355690457',
+//             email: 'rubyjane@blackpink.in',
+//             website: 'bpvenom.in',
+//         },
+//         education: [
+//             {
+//                 university: 'seoul university',
+//                 degree: 'Art of Aesthetics',
+//                 startDate: '22 Sep 2016',
+//                 endDate: '17 Aug 2019',
+//                 gpa: '8.75'
+//             }
+//         ],
+//         experience: [
+//             {
+//                 title: 'Ruby Jane',
+//                 organisation: 'Blackpink',
+//                 startDate: '9 Dec 2018',
+//                 endDate:'ongoing',
+//                 description: 'Njoying my lifeabouts in pursuing the art of aesthetics in my life.'
+//             },
+//         ],
+//         skills: [
+//             {
+//                 skillName: 'Ambidextrous',
+//                 keywords: '#Dancer, #bp, #moon'
+//             },
+//             {
+//                 skillName: 'Hip-Hop Dancer',
+//                 keywords: '#Dance, #heartful'
+//             }
+//         ],
+//         projects: [{
+//             projectName: 'Coachella Tour',
+//             keywords: '#rock, #worth, #blast',
+//             projectDescription: [ 'Pink venom Starlight', 'Moonlight-You and me' ],
+//             projectLink: 'www.blackpinkofficial.in'
+//         }],
+//         achievements: [
+//             {
+//                 title: 'Best Dancer Award of the Year 2022',
+//                 date: '22 January 2024',
+//                 organisation: 'US Cabinet of Culture',
+//                 description: ['member of blackpink community', 'seoul kpop dancer A1'],
+//             }
+//         ],
+//         createdBy: '665418c5c5735151089e2b6e',
+
+//     });
+
+//     await newResume.save()
+//     .then((res)=>{
+//         console.log(res);
+//     })
+//     .catch((err)=>{
+//         console.log("uncaught error", err.message);
+//     });
+
+//     res.send("Resume generated successfully!");
+
+// });

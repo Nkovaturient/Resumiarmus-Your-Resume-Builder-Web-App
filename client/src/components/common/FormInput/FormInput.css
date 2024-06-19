@@ -2,32 +2,41 @@
 .form-control {
     position: relative;
     margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: blue; */
+    line-height: 1.1cm;
+    margin-bottom: 2.1rem;
+    color: #49557e;
   }
-  
-  .textarea-label {
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    background: white;
-    padding: 0 5px;
-    color: grey;
-    font-size: 16px;
-    transition: all 0.2s ease;
+  .form-control label{
+    font-size: max(1.5vw, 16px);
+    font-weight: 600;
   }
-  
-  textarea {
-    width: 100%;
+  .form-control input{
+    /* background-color: rgba(161, 158, 158, 0.452); */
     padding: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
+    margin-left: 2.2rem;
+    border: none;
+    outline: none;
+    border: 2.45px solid #49557e;
+    border-radius: 7px;
+    width: 350px;
+    padding: 0;
+    color: #0d0d0d;
+    margin-right: 1.1rem;
+    transition: all 0.1s ease-in;
   }
-  
-  textarea:focus + .textarea-label,
-  textarea.shrink + .textarea-label,
-  textarea:not(:placeholder-shown) + .textarea-label {
+  .form-group input:focus, input:active, input:focus-visible{
     top: -10px;
     left: 10px;
-    font-size: 14px;
-    color: red;
+    font-weight: 600;
+    font-size: max(0.65vw, 20px);
   }
   
+  .alert{
+    color: rgb(241, 16, 16);
+    font-weight: 600;
+    display: flex;
+    margin-right: 2.2rem;
+  }

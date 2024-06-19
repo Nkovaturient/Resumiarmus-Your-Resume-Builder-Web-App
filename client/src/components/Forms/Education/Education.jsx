@@ -13,7 +13,7 @@ export default function Education({resume}) {
 
     return (
         <>
-        <div className="education">
+        <div className="sections">
             <h6>Education Details</h6>
             <FormSection input={school} name="Institution" section="education" resume={resume} />
 

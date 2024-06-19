@@ -34,12 +34,12 @@ const FormInput = (props) => {
                     setMinSize(keyword.length)
             })
             if (minSize < 4)
-                setErrorText({ ...errorText, [id]: 'Too Small Keyword' })
+                setErrorText({ ...errorText, [id]: 'Enter valid Keywords separated by a comma' })
             else setErrorText({ ...errorText, [id]: '' })
         }
         else {
             if (input.length < 3)
-                setErrorText({ ...errorText, [id]: 'Too Small Input' })
+                setErrorText({ ...errorText, [id]: 'Enter valid Input' })
             else setErrorText({ ...errorText, [id]: '' })
         }
     }
@@ -53,16 +53,16 @@ const FormInput = (props) => {
     };
 
     const inputAttributes = (item) => {
-        const value = {
+        const name = {
             type: 'text',
             shrink: false
         }
         if (item === 'date' || item === 'startDate' || item === 'endDate') {
-            value.type = 'date'
-            value.shrink = true
+            name.type = 'date'
+            name.shrink = true
         }
 
-        return value;
+        return name;
     }
 
   return (
@@ -76,7 +76,14 @@ const FormInput = (props) => {
                         (name[0] === 'description' || name[0] === 'projectDescription') 
                         ? <Description sectionName={props.name} section={props.section} index={props.id} name={name[0]}/>
                         : <div className="form-control">
-                            <textarea name={name[0]} id={name + idx}
+                            <label htmlFor="">
+                            {
+                                (name[0] === 'keywords') 
+                                ? ( _.startCase(name[0]) + ' (separated by a `,`)')
+                                : _.startCase(name[0])
+                            }
+                            </label>
+                            <input name={name[0]} id={name + idx}
                             value={props.section[props.id][name[0]]}
                             onChange={handleChange}
                             type={inputAttributes(name[0].type)}
@@ -84,18 +91,9 @@ const FormInput = (props) => {
                             className={
                                 props.section[props.id][name[0]] ? 'shrink' : ''
                               }
-                            >{
-                                (name[0] === 'keywords') 
-                                ? ( _.startCase(name[0]) + ' (separated by a `,`)')
-                                : _.startCase(name[0])
-                            }
-                            </textarea>
+                            />
                             <label htmlFor={name[0] + idx} className='textarea-label'>
-                            {
-                                (name[0] === 'keywords') 
-                                ? ( _.startCase(name[0]) + ' (separated by a  ` , `)')
-                                : _.startCase(name[0])
-                            }
+                           
                             </label>
                             {(errorText[name + idx])
                             ? <div className="alert">{errorText[name + idx]}</div> : '' }
@@ -111,3 +109,9 @@ const FormInput = (props) => {
 }
 
 export default FormInput
+
+/* {
+                                (name[0] === 'keywords') 
+                                ? ( _.startCase(name[0]) + ' (separated by a  ` , `)')
+                                : _.startCase(name[0])
+                            } */

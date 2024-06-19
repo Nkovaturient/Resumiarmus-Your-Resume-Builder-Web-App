@@ -15,6 +15,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 import { logInSuccess, logOutSuccess } from './redux/actionControllers';
 import Logout from './pages/Logout/Logout';
+import JwtTestComponent from './pages/jsontoken';
 
 
 const App = (props) => {
@@ -28,7 +29,9 @@ const App = (props) => {
 
     return (
         <>
+        
         <div className="app">
+            
             <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -42,6 +45,7 @@ const App = (props) => {
                 <Route path='/builder' element={<BuildResume setForm={setForm} form={form} />} />
                 <Route path='/template1' element={<Template1 />} />
                 <Route path='/template2' element={<Template2 />} />
+                
             </Routes>
             </div>
             <Footer/>

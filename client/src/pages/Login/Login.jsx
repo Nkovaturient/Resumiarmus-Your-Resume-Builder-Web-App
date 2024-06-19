@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { loginCheck } from '../../redux/actionControllers';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-
+import './Login.css'
 
 const Login = (props) => {
     // const history = useHistory()
@@ -37,7 +37,9 @@ const Login = (props) => {
         if (name === 'password') {
             if (!input.match(regex.password))
                 setErrorText({ ...errorText, [name]: 'Password must be Alphanumeric, Min. Length 6' })
-            else setErrorText({ ...errorText, [name]: '' })
+            else 
+            setErrorText({ ...errorText, [name]: '' })
+            // enqueueSnackbar("Entered wrong credentials!", { variant: 'error'});
         }
     }
 
@@ -61,12 +63,12 @@ const Login = (props) => {
         })
     }
   return (
-    <div className="main">
+    <div className="login-main">
         <div className="main-img">
             <img src="" alt="loginImage" />
         </div>
         <div className="main-item">
-            <div className="paper">
+            <div className="login-paper">
                 <div className="avatar">
                     <FontAwesomeIcon icon={faUserLock} /> <span>Sign In</span>
                 </div>
@@ -88,7 +90,7 @@ const Login = (props) => {
                     />
                     { (errorText.email)? <div className="alert">{errorText.email}</div> : '' }
                     { (errorText.password)? <div className="alert">{errorText.password}</div> : '' }
-                    { (props.error)? <div className="alert">{props.error}</div> : '' }
+                    { (props.error === 'Request failed with status code 400')? <div className="alert">Entered invalid credentials!Try again.</div> : '' }
 
                     <input type="checkbox" name="remember" id="remember" value='remember' />
                     <label htmlFor="remember">Remember me</label>

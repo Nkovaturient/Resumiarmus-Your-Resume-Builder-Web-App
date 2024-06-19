@@ -328,7 +328,7 @@ export const updateUser = (newUser, token) => {
     var user = JSON.parse(window.atob(base64));
 
     user = { ...user, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email }
-    //console.log(user);
+    console.log('action controllers user=', user);
 
     return (dispatch) => {
         dispatch(updateUserRequest())

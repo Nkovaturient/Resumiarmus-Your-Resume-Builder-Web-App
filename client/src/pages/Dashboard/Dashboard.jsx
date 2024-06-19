@@ -8,7 +8,7 @@ import SavedResumes from './savedResumes.jsx';
 
   const [content, setContent] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = ( newValue) => {
       console.log(newValue)
       setContent(newValue);
   };
@@ -27,13 +27,9 @@ import SavedResumes from './savedResumes.jsx';
   return (
       <>
           <div className='menu'>
-              <div
-                  onChange={handleChange}
-                  indicatorColor="default"
-                  textColor="default"
-              >
-                  <button className='label'>Profile</button>
-                  <button className='label' disabled={(Array.isArray(props.resume.data)) ? '' : true} >Saved Resumes</button>
+              <div>
+                  <button onClick={()=> handleChange(0)} className='label btn'>Profile</button>
+                  <button onClick={()=> handleChange(1)} className='label btn' disabled={(Array.isArray(props.resume.data)) ? '' : true} >Saved Resumes</button>
               </div>
           </div>
           <hr className='line'></hr>

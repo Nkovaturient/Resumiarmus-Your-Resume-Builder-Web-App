@@ -36,7 +36,10 @@ export default function ForgotPassword() {
               navigate("/login");
           }, 2000);
 
-      } else {
+      } else if(res.status === 500) {
+        enqueueSnackbar('Server Error! Please try after some time', { variant: 'error' });
+        // navigate('/');
+      } else  {
         enqueueSnackbar('Invalid Email', { variant: 'error' });
       }
   }
@@ -53,7 +56,8 @@ export default function ForgotPassword() {
               body: JSON.stringify(user)
           })
           goto(response);
-
+          console.log(response);
+          // enqueueSnackbar('Invalid Email', { variant: 'error' });
           return response
       } catch (err) {
           console.log(err)

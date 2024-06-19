@@ -3,8 +3,11 @@ import { fetchData, updateUser } from '../../redux/actionControllers'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import './Dashboard.css'
+import {useSnackbar} from 'notistack'
 
 const Dashboard = (props) => {
+  const{enqueueSnackbar}=useSnackbar();
   
   const token = localStorage.getItem('token');
   var base64Url = token.split('.')[1];
@@ -37,6 +40,8 @@ const Dashboard = (props) => {
       }
       //console.log(user, props.token)
       props.updateUser(user, props.token)
+      enqueueSnackbar("Updated User Details", {variant: 'success'})
+      enqueueSnackbar("Changes may take some time to reflect", {variant: 'info'})
   }
 
   return (

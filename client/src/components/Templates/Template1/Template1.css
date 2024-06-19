@@ -1,0 +1,429 @@
+
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-sm {
+    flex: 1;
+    padding: 10px;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Resume Specific Styles */
+.resume {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.top-content .name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.top-content .contact-details {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.top-content .contact-details .span3 {
+    margin: 0 5px;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.left-content, .right-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content {
+    margin-bottom: 20px;
+}
+
+.heading h2 {
+    background-color: #ffd700;
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+.info .details {
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.description p {
+    margin: 5px 0;
+}
+
+.keywords {
+    display: inline-block;
+    background-color: #eee;
+    padding: 2px 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* Left Content */
+.left-content .education .heading h2 {
+    background-color: #ffd700;
+}
+
+.left-content .skills .heading h2 {
+    background-color: #ffd700;
+}
+
+.left-content .achivements .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Right Content */
+.right-content .experience .heading h2 {
+    background-color: #ffd700;
+}
+
+.right-content .projects .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Additional Styling */
+.top-content img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.contact-details .row {
+    align-items: center;
+}
+
+.contact-details .row span {
+    color: #ffd700;
+}
+
+.contact-details .row svg {
+    color: #ffd700;
+}
+
+.details {
+    margin-bottom: 15px;
+}
+
+.details .inline {
+    margin-right: 5px;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.keywords {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-content, .right-content {
+        width: 100%;
+    }
+}
+
+
+/* Global Styles */
+
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-sm {
+    flex: 1;
+    padding: 10px;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Resume Specific Styles */
+.resume {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.top-content .name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.top-content .contact-details {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.top-content .contact-details .span3 {
+    margin: 0 5px;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.left-content, .right-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content {
+    margin-bottom: 20px;
+}
+
+.heading h2 {
+    background-color: #ffd700;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.info .details {
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.description p {
+    margin: 5px 0;
+}
+
+.keywords {
+    display: inline-block;
+    background-color: #eee;
+    padding: 2px 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* Left Content */
+.left-content .education .heading h2,
+.left-content .skills .heading h2,
+.left-content .achivements .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Right Content */
+.right-content .experience .heading h2,
+.right-content .projects .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Additional Styling */
+.top-content img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.contact-details .row {
+    align-items: center;
+}
+
+.contact-details .row span {
+    color: #ffd700;
+}
+
+.contact-details .row svg {
+    color: #ffd700;
+}
+
+.details {
+    margin-bottom: 15px;
+}
+
+.details .inline {
+    margin-right: 5px;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.keywords {
+    font-size: 14px;
+    margin-top: 5px;
+}
+/* Responsive Styling for max-width: 1050px */
+@media (max-width: 1050px) {
+    .top-content .name h1 {
+        font-size: 28px;
+    }
+
+    .top-content .contact-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .top-content .contact-details .span3 {
+        margin: 5px 0;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-content, .right-content {
+        width: 100%;
+    }
+
+    .heading h2 {
+        font-size: 18px;
+    }
+
+    .details .sub-heading {
+        font-size: 16px;
+    }
+}
+
+/* Responsive Styling for max-width: 900px */
+@media (max-width: 900px) {
+    .container {
+        padding: 10px;
+    }
+
+    .top-content .name h1 {
+        font-size: 24px;
+    }
+
+    .main-content {
+        padding: 10px 0;
+    }
+
+    .left-content, .right-content {
+        padding: 10px;
+    }
+
+    .heading h2 {
+        font-size: 16px;
+    }
+
+    .details .sub-heading {
+        font-size: 14px;
+    }
+}
+
+/* Responsive Styling for max-width: 750px */
+@media (max-width: 750px) {
+    .top-content .name h1 {
+        font-size: 20px;
+    }
+
+    .top-content .contact-details .span3 {
+        margin: 3px 0;
+    }
+
+    .top-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-content {
+        padding: 5px 0;
+    }
+
+    .left-content, .right-content {
+        padding: 5px;
+    }
+
+    .heading h2 {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .details .sub-heading {
+        font-size: 12px;
+    }
+
+    .info .details {
+        margin-bottom: 8px;
+    }
+}
+
+
+
+
+
+

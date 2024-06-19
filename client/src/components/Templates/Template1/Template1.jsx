@@ -1,21 +1,26 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { renderPreview } from '../../../redux/actionControllers';
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import './Template1.css'
 
 const Template1 = ({ resume, renderPreview }) => {
     const location = useLocation();
+    const navigate=useNavigate();
 
     useEffect(() => {
         renderPreview()
     }, []) //eslint-disable-line
 
+    const handleReturn=()=>{
+        navigate(`/${builder}`)
+    }
     return (
+        <>
         <div id={location.state ? '' : 'hide'}>
             <div className="container" id='template'>
 
-                <div className="main">
+                <div className="main" id='15'>
 
                     <div className="resume col-12">
 
@@ -201,6 +206,7 @@ const Template1 = ({ resume, renderPreview }) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

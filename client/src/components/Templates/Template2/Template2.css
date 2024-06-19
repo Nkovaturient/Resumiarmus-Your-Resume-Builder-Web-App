@@ -1,0 +1,193 @@
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-sm {
+    flex: 1;
+    padding: 10px;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+/* Resume specific styles */
+.resume {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-content {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-content .name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.top-content .contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-content .contact-details .row {
+    margin-bottom: 5px;
+}
+
+.top-content .contact-details .row span {
+    margin-left: 10px;
+}
+
+/* Main content styles */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.left-content, .right-content {
+    flex: 1;
+}
+
+.content {
+    margin-bottom: 20px;
+}
+
+.heading h2 {
+    background-color: #ffd700;
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+.info .details {
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.inline {
+    display: inline;
+}
+
+.description p {
+    margin: 5px 0;
+}
+
+.keywords {
+    display: inline-block;
+    background-color: #eee;
+    padding: 2px 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* Left content */
+.left-content .experience .heading h2 {
+    background-color: #ffd700;
+}
+
+.left-content .projects .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Right content */
+.right-content .skills .heading h2 {
+    background-color: #ffd700;
+}
+
+.right-content .education .heading h2 {
+    background-color: #ffd700;
+}
+
+.right-content .achivements .heading h2 {
+    background-color: #ffd700;
+}
+
+/* Additional styling */
+.top-content img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.top-content .name h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #ffd700;
+}
+
+.contact-details .row {
+    align-items: center;
+}
+
+.contact-details .row span {
+    color: #ffd700;
+}
+
+.contact-details .row svg {
+    color: #ffd700;
+}
+
+.main-content {
+    display: flex;
+}
+
+.left-content, .right-content {
+    width: 50%;
+    padding: 20px;
+}
+
+.left-content .heading,
+.right-content .heading {
+    margin-bottom: 15px;
+}
+
+.details {
+    margin-bottom: 15px;
+}
+
+.details .inline {
+    margin-right: 5px;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.keywords {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-content, .right-content {
+        width: 100%;
+    }
+}
