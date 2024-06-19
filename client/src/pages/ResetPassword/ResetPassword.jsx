@@ -48,10 +48,8 @@ export default function ResetPassword() {
         jwt.verify(getToken(), secret_key , function (err, decoded) {
           if(err  instanceof Error) {
                   console.error('verification failed: ', err);
-                  // console.error('Error generating or verifying token:', err.message);
                 } else {
                   console.log("decoded jwt:", decoded);
-                  // console.error('An unexpected error occurred:', err);
                 }
         });
     } catch(err){
