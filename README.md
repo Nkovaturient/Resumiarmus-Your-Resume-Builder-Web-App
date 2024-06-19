@@ -21,7 +21,7 @@ curated template options, designed and developed efficiently just to make you jo
 - **notistack** : attractive notifications provider api library for better user-communication and updation 🔔
 
 # Frontend Updates  ⚛️ 📊
-# After long hours of consistency and error handling, I have revised and setup my frontend with react-vite and redux libraries 🗽 🥳
+## After long hours of consistency and error handling, I have revised and setup my frontend with react-vite and redux libraries 🗽 🥳
 -  **Redux**-state management library handling entire
     - backend-authentication, fetching data, user details updation, CRUD operations on resumes and user models efficiently :
 - utilising Reducer, actions and slice of react-redux 📃
