@@ -26,6 +26,7 @@ curated template options, designed and developed efficiently just to make you jo
     - backend-authentication, fetching data, user details updation, CRUD operations on resumes and user models efficiently :
 - utilising Reducer, actions and slice of react-redux 📃
 - Achieving **Modularity** : crux of programming by breaking down + structuring each section and logic into various components 📔
+- Implemented Responsive Media Query for mobile, desktop and tablet screens 🌟
 
 # To Resolve: ⏲️
 - Reset password component- to handle configuration in jwt tokens as per jsonwebtoken library principles
