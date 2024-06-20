@@ -83,15 +83,42 @@
     
 }
 
-@media (max-width:750px) {
+@media (max-width:900px) {
+    .header-img{
+        margin-top: 5.4rem;
+    }
     .header-content{
-        max-width: 65%;
+        max-width: 55%;
+    }
+    /* .header-content h3{
+        color: #fff;
+    } */
+    .header-content p{
+        display: none;
+    }
+}
+
+@media (max-width:750px) {
+
+    .header-content{
+        max-width: 70%;
+        color: #fff;
+        text-align: center;
+    }
+    .header-content h3{
+        color: #fff;
+        margin-left: 2.56rem;
     }
     .header-content p{
         display: none;
     }
     .header-content button{
         padding: 2vw 4vw;
+        margin-left: 5.4rem;
+    }
+    .header-img{
+        margin-top: 6.5rem;
+
     }
     
 }

@@ -41,7 +41,7 @@ const ResumeTemplates = (props) => {
         <li>Fill the required details. </li>
         <li>Download it and you are good to go!</li>
       </ul>
-      <button className='resume-btn'><Link to='/builder'>Build your resume for free.</Link></button>
+      <button className='resume-btn' onClick={() => handleClick()}><Link to='/builder'>Build your resume for free.</Link></button>
       </div>
      </div>
       <TemplatesList />

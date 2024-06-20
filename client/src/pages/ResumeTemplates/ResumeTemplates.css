@@ -104,3 +104,11 @@
     background-color: #4c11aa;
     border-radius: 50px;
 }
+
+@media (max-width: 780px) {
+   
+    .create-templates{
+        margin-bottom: 25rem;
+    }
+    
+}

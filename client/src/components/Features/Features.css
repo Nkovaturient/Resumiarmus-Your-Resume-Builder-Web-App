@@ -13,7 +13,7 @@
     text-align: center;
 }
 .features-content{
-    max-width: 38%;
+    /* max-width: 38%; */
     color: #44557e;
     padding-left: 2.1rem;
     gap: 15px;
@@ -30,6 +30,7 @@
 }
 .features-template-card{
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     height: 30%;
     width: 90%;
@@ -38,6 +39,7 @@
     margin-top: 6.5rem;
     background-image: linear-gradient(0.25turn, #44557e, #e7ff0e);
 }
+
 .features-template-card .card{
     position: absolute;
     height: 120%;
@@ -46,6 +48,7 @@
     /* border: 4px solid #ff670e; */
     box-shadow: 0 10px 15px 0 #44557e;
     margin-top: 2.45rem;
+    /* flex: 1 1 calc(33.333% - 32px); */
 }
 #card1{
     background-image: url(../../assets/T1.jpg);
@@ -92,6 +95,48 @@
 }
 #card6 p{
     font-weight: 400;
-    font-size: 0.97rem;
+    font-size: max(1.1vw, 17px);
     margin-top: 0.76rem;
+}
+
+@media (max-width: 750px) {
+    .features{
+        margin-top: 10rem;
+    }
+    .features-content{
+        /* width: 200%; */
+        height: 50vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       justify-content: center;
+        
+    }
+    .features-content p{
+        width: 100%;
+        /* background-color: yellow; */
+
+    }
+    .features-template-card{
+        height: 30%;
+        background-image: linear-gradient(0.25turn, #44557e, #e7ff0e);
+    }
+    .features-template-card .card{
+        height: 40vw;
+    }
+    .features-template-card #card6{
+        display: none;
+    }
+    
+}
+
+@media (max-width:900px) {
+    .features-template-card .card{
+        height: 40vw;
+        
+    }
+    .features-template-card #card6{
+        display: none;
+    }
+    
 }

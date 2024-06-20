@@ -41,7 +41,7 @@ const Dashboard = (props) => {
       //console.log(user, props.token)
       props.updateUser(user, props.token)
       enqueueSnackbar("Updated User Details", {variant: 'success'})
-      enqueueSnackbar("Changes may take some time to reflect", {variant: 'info'})
+      // enqueueSnackbar("Changes may take some time to reflect", {variant: 'info'})
   }
 
   return (

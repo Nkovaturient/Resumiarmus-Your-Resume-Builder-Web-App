@@ -19,9 +19,9 @@ import { assets } from '../../assets/assets'
             <div className="footer-content-center">
                 <h2>COMPANY</h2>
                 <ul>
-                    <li>Home</li>
+                    <li><a href="/">Home</a></li>
                     <li>About Us</li>
-                    <li>Delivery</li>
+                    <li><a href="#features">Features</a></li>
                     <li>Privacy Policy</li>
                 </ul>
             </div>
@@ -29,7 +29,7 @@ import { assets } from '../../assets/assets'
                 <h2>GET IN TOUCH</h2>
                 <ul>
                     <li>+1 254641254</li>
-                    <li>email@resumify.com</li>
+                    <li>rubykim369101@gmail.com</li>
                 </ul>
             </div>
         </div>

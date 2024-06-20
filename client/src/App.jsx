@@ -16,7 +16,7 @@ import ResetPassword from './pages/ResetPassword/ResetPassword'
 import { logInSuccess, logOutSuccess } from './redux/actionControllers';
 import Logout from './pages/Logout/Logout';
 import JwtTestComponent from './pages/jsontoken';
-
+import { config } from './config/config';
 
 const App = (props) => {
     const[form, setForm]=useState('personal');

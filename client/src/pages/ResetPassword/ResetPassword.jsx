@@ -37,58 +37,63 @@ export default function ResetPassword() {
  
     const getToken = () => {
         let token = query.get("token");
+        // const tokenn=`http://localhost:${config.CLIENT_URL}/password/reset?token=${token}`
+        // console.log(tokenn, '----', token);
           return token;
       }
 
     const verifyToken = () => {
         
         try{
-            const secret_key=config.SECRET_KEY
+            const secret_key=config.VITE_SECRET_KEY;
 
         jwt.verify(getToken(), secret_key , function (err, decoded) {
-          if(err  instanceof Error) {
+          if(err) {
                   console.error('verification failed: ', err);
+                  enqueueSnackbar(`${err.message}`, {variant: 'warning'})
                 } else {
                   console.log("decoded jwt:", decoded);
                 }
         });
     } catch(err){
-        if (err instanceof Error) {
-            console.error('Error generating or verifying token:', err.message);
-          } else {
-            console.error('An unexpected error occurred:', err);
-          }
-      }
+            console.log('Error generating or verifying token:', err.message);
     }
-    
+  }
+
     const clickSubmit = (event) => {
         event.preventDefault();
-  
-        const token = getToken();
-        const payload = jwt.decode(token);
-        const userEmail = payload.email;
-  
-        const user = {
-            password: values.password || undefined,
-            email: userEmail || undefined,
-            token: token || undefined
-        }
-  
-        if (verifyToken()) {
-            create(user).then((data) => {
-                if (data.error) {
-                    setValues({ ...values, error: data.error })
-                } else {
-                    setValues({ ...values, error: '', open: true })
-                }
-            })
-        } else {
-          enqueueSnackbar('Invalid token', { variant: 'error' });
-            setTimeout(() => {
-                navigate("/login");
-            }, 2000);
-        }
-  
+  try{
+
+    const token = getToken();
+    const payload = jwt.decode(token);
+    const userEmail = payload.email;
+
+    const user = {
+        password: values.password || undefined,
+        email: userEmail || undefined,
+        token: token || undefined
+    }
+
+    if (verifyToken()) {
+        create(user).then((data) => {
+            if (data.error) {
+              console.log('data==', data)
+                setValues({ ...values, error: data.error })
+            } else {
+                setValues({ ...values, error: '', open: true })
+            }
+        })
+    } else {
+      enqueueSnackbar('Invalid token! Try after some time.', { variant: 'error' });
+        setTimeout(() => {
+            navigate("/login");
+        }, 3000);
+    }
+
+  }catch(err){
+    enqueueSnackbar(`${err.message}`, { variant: 'error' });
+
+  }
   
     }
 
@@ -123,9 +128,10 @@ export default function ResetPassword() {
               body: JSON.stringify(user)
           })
           goto(response);
+          console.log('response==', response);
           return response
       } catch (err) {
-          console.log('error in reset', err)
+          console.log('error in reset', err.message)
       }
   }
 
@@ -142,12 +148,14 @@ export default function ResetPassword() {
                   value={values.password}
                   autoComplete='password'
                   onChange={handleChange('password')}
+                  required
                   />
                   <label htmlFor="confirmPassword">Confirm New Password</label>
       <input type="password" name="confirmPassword" id="confirmPassword"
                   value={values.confirmPassword}
                   autoComplete='confirmPassword'
                   onChange={handleChange('confirmPassword')}
+                  required
                   />
                   <button type='submit' onClick={clickSubmit}>Reset <FontAwesomeIcon icon={faRefresh}/></button>
       </form>
