@@ -216,11 +216,11 @@ export const ResetPassword = async (req, res) => {
     <br>
     <p>Your password has been reset successfully.</p>
     <br>
-    <p>Please <a href="resumiarmus.github.io">Login</a> to continue with our services.</p>
+    <p>Please <a href="http://localhost:5173/login">Login</a> to continue with our services.</p>
     `;
 
     try {
-        sendMail(config.MAIL_USER, req.body.email, "PASSWORD RESET SUCCESSFULL", mailHtmlContent);
+        sendMail(config.MAIL_SENDER, req.body.email, "PASSWORD RESET SUCCESSFULL", mailHtmlContent);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Unable to send mail" });
