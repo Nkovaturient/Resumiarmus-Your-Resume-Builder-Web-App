@@ -4,7 +4,7 @@ curated template options, designed and developed efficiently just to make you jo
 
 ![resumiarmus_logo](https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/56befdd1-4859-417f-9ba4-dbac6f7d12ca)
 
-![resumiarmus](https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder/assets/127786136/31fb1212-5c22-4dec-abc5-0068fa32e8b1)
+![Screenshot (286)](https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/af074bfa-1a73-444d-b4c3-068a002c95b3)
 
 
 ## 🍀Technologies Used 🧑‍💻
@@ -23,12 +23,24 @@ curated template options, designed and developed efficiently just to make you jo
 # Frontend Updates  ⚛️ 📊
 ## After long hours of consistency and error handling, I have revised and setup my frontend with react-vite and redux libraries 🗽 🥳
 -  **Redux**-state management library handling entire
-    - backend-authentication, fetching data, user details updation, CRUD operations on resumes and user models efficiently :
+- backend-authentication, fetching data, user details updation, CRUD operations on resumes and user models efficiently :
 - utilising Reducer, actions and slice of react-redux 📃
 - Achieving **Modularity** : crux of programming by breaking down + structuring each section and logic into various components 📔
+- Implemented Responsive Media Query for mobile, desktop and tablet screens 🌟
+  
+![Screenshot (287)](https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/4b221ac8-1a42-4e0d-90be-87c3b9b77b7b)
+
+# Noteworthy Point for Project Building- 🗒️
+- Frontend .env environment var to be imported in vite via- import.meta.env.VITE_API_URL(as required)
+- components logic and rendering 'return'
+- For implementing 'sending Email' functionality using Nodemailer 📫- creating transporter and services via Google.auth.OAuth2-
+   - web app must be registered on google dev console for client_id, secret
+   - Gmail API v1 services in OAuth 2.0 playground enabled for the app to retrieve refresh token
+   - Enabled APIs and Services on Google dev console
+
 
 # To Resolve: ⏲️
-- Reset password component- to handle configuration in jwt tokens as per jsonwebtoken library principles
+- Reset password component- to handle configuration in *jwt tokens* as per jsonwebtoken library principles
 - while editing the savedResumes of user, achievements section couldnt be mapped-hence, yet to revise the setup!
 
 Happy Coding! 😄💙
