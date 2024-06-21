@@ -19,7 +19,7 @@ import JwtTestComponent from './pages/jsontoken';
 import { config } from './config/config';
 
 const App = (props) => {
-    const[form, setForm]=useState('personal');
+   
     const storedJwt=localStorage.getItem('token');
 
     useEffect(()=>{
@@ -42,10 +42,10 @@ const App = (props) => {
                 <Route path="/password/reset" element={<ResetPassword/>}  />
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path= '/resume-templates' element={<ResumeTemplates />} />
-                <Route path='/builder' element={<BuildResume setForm={setForm} form={form} />} />
+                <Route path='/builder' element={<BuildResume />} />
                 <Route path='/template1' element={<Template1 />} />
                 <Route path='/template2' element={<Template2 />} />
-                
+                <Route path='/pdftest' element={<JwtTestComponent/>} />
             </Routes>
             </div>
             <Footer/>

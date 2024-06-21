@@ -16,7 +16,7 @@ const FormSection = (props) => {
 
     const [section, setSection] = useState(props.resume[props.section]);
     const blankSection = props.input;
-    console.log('prop resume=', props.resume[props.section]);
+    // console.log('prop resume=', props.resume[props.section]);
     
     // console.log('section=', [...section])
     const addSection = () => {

@@ -56,6 +56,7 @@ const BuildResume = (props) => {
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
+        enqueueSnackbar("Click on preview template 1 after filling details to save changes", {variant: 'info'} )
     };
 
     const handleBack = () => {
@@ -69,7 +70,7 @@ const BuildResume = (props) => {
         var width = preview.clientWidth;
         var height = preview.clientHeight;
 
-        if (props.image && props.resume.id) {
+        if (props.image) {
 
             const pdf = new jsPDF({
                 orientation: (height > width) ? "portrait" : "landscape",
@@ -77,9 +78,14 @@ const BuildResume = (props) => {
                 format: [height, width]//[height, width]//[img.height * (0.5625), img.width * (0.5625)]
             });
             pdf.addImage(img, 'PNG', 0, 0, width, height, 'SLOW');
-            pdf.save("resume.pdf");
+            // pdf.save("resume.pdf");
+            pdf.save(`${props.resume.personal.firstName}_Resume.pdf`)
             enqueueSnackbar('Downloaded! Cast your Resume PDF. All the Best! ', { variant: 'success' });
-            // navigate('/dashboard');
+            setTimeout(() => {
+                enqueueSnackbar('Your saved Resumes might take some time to reflect. ', { variant: 'info' });
+                navigate('/dashboard'); 
+            }, 3000);
+            
         }
     };
 
@@ -148,7 +154,7 @@ const BuildResume = (props) => {
                     : <div id={'pdf'}></div>}
 
                 <div className=" build-resume preview">
-                    <button onClick={generatePdf} disabled={(props.image) ? '' : true} >Download PDF <FontAwesomeIcon icon={faDownload} /></button>
+                    <button onClick={ generatePdf } disabled={(props.image) ? '' : true} >Download PDF <FontAwesomeIcon icon={faDownload} /></button>
                     <h4>Preview</h4>
                     {/* <Template1 key={1} renderPreview={props.resume[props.section]} /> */}
                     {(props.image) ? <img id='preview' alt='preview' src={props.image} /> : ''}
@@ -157,30 +163,7 @@ const BuildResume = (props) => {
                 </div>
 
             </div>
-            {/* <div className='build-resume'>
-        <div className="build-resume-container">
-            <div className="build-resume-steps">
-            <button  className={ form === 'personal' ? 'form-active' : ''}>Personal Info</button>
-            <button  className={ form === 'education' ? 'form-active' : ''}>Education</button>
-            <button  className={ form === 'experience' ? 'form-active' : ''}>Experience</button>
-            <button  className={ form === 'skills' ? 'form-active' : ''}>Skills</button>
-            <button className={ form === 'projects' ? 'form-active' : ''}>Projects</button>
-            <button  className={ form === 'achievements' ? 'form-active' : ''}>Achievements</button>
-            </div>
-
-            <div className="build-resume-form">
-                {
-                    form === 'personal' ?  <Personal setForm={setForm} />
-                    : form === 'education' ? <Education setForm={setForm}/>
-                    : form === 'experience' ? <Experience setForm={setForm}/>
-                    : form === 'skills' ? <Skills setForm={setForm} />
-                    : form === 'projects' ? <Projects setForm={setForm}/>
-                    : form === 'achievements' ? <Achievements setForm={setForm}/>
-                    : null
-                }
-            </div>
-        </div>
-    </div> */}
+           
         </>
     )
 }

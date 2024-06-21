@@ -31,7 +31,7 @@ const Personal = (props) => {
         if (name === 'firstName' || name === 'lastName') {
             if (!input.match(regex.name))
                 setErrorText({ ...errorText, [name]: 'Invalid Name; Length > 2' })
-            else setErrorText({ ...errorText, [name]: 'Hm, Looks Good!' })
+            else setErrorText({ ...errorText, [name]: '' })
         }
         if (name === 'email') {
             if (!input.match(regex.email))
