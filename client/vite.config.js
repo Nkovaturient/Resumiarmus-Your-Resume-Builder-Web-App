@@ -11,7 +11,7 @@ export default defineConfig({
     inject({
       util: 'util',
       //inject Buffer as global variable
-      Buffer:['buffer', 'Buffer'],
+      // Buffer:['buffer', 'Buffer'],
       process: 'process'
     }),
   ],
@@ -32,7 +32,7 @@ export default defineConfig({
     alias: {
       util: 'rollup-plugin-node-builtins/polyfills/util',
       stream: 'rollup-plugin-node-builtins/polyfills/stream',
-      buffer: 'rollup-plugin-node-builtins/polyfills/buffer',
+      // buffer: 'rollup-plugin-node-builtins/polyfills/buffer',
       process: 'process/browser'
 
     }
