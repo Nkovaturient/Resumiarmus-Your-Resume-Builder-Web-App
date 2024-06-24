@@ -120,7 +120,7 @@ export default function ResetPassword() {
 
   const create = async (user) => {
       try {
-          let response = await fetch(`http://localhost:${config.VITE_API_URL}/cvi/password/reset`, {
+          let response = await fetch(`${config.VITE_APP_SERVER}/cvi/password/reset`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'

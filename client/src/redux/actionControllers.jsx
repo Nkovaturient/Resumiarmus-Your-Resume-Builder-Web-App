@@ -38,7 +38,7 @@ export const loginCheck = (user, callback) => {
         dispatch(logInRequest())
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/login`,
+            url: `${config.VITE_APP_SERVER}/cvi/login`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export const logout = (user, callback) => {
         dispatch(logOutRequest())
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/logout`,
+            url: `${config.VITE_APP_SERVER}/cvi/logout`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ export const fetchData = (token, callback) => {
     return (dispatch) => {
         dispatch(fetchDataRequest())
 
-        axios.get(`http://localhost:${config.VITE_API_URL}/cvi/dashboard/resume/all/${user.id}`, {
+        axios.get(`${config.VITE_APP_SERVER}/cvi/dashboard/resume/all/${user.id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': token
@@ -212,7 +212,7 @@ export const postData = (token, resume) => {
         dispatch(postDataRequest())
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/dashboard/resume`,
+            url: `${config.VITE_APP_SERVER}/cvi/dashboard/resume`,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -266,7 +266,7 @@ export const updateData = (token, resume) => {
         dispatch(updateDataRequest())
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/dashboard/resume/${resume._id}`,
+            url: `${config.VITE_APP_SERVER}/cvi/dashboard/resume/${resume._id}`,
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -335,7 +335,7 @@ export const updateUser = (newUser, token) => {
         //console.log(token);
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/dashboard/user/${user.id}`,
+            url: `${config.VITE_APP_SERVER}/cvi/dashboard/user/${user.id}`,
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -384,7 +384,7 @@ export const deleteData = (token, resume) => {
         dispatch(deleteDataRequest())
 
         axios({
-            url: `http://localhost:${config.VITE_API_URL}/cvi/dashboard/resume/${resume._id}`,
+            url: `${config.VITE_APP_SERVER}/cvi/dashboard/resume/${resume._id}`,
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

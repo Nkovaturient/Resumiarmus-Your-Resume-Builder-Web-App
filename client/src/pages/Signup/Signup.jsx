@@ -74,7 +74,7 @@ export default function Signup(props) {
 
   const create = async (user) => {
       try {
-          let response = await fetch(`http://localhost:${config.VITE_API_URL}/cvi/signup`, {
+          let response = await fetch(`${config.VITE_APP_SERVER}/cvi/signup`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'

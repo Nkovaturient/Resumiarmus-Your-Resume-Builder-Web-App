@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function ForgotPassword() {
-  // const classes = useStyles();
-  // const history = useHistory();
-//   const alert = useAlert();
+
   const navigate= useNavigate();
   
   const {enqueueSnackbar}= useSnackbar();
@@ -48,8 +46,8 @@ export default function ForgotPassword() {
 
   const create = async (user) => {
       try {
-          let response = await fetch(`http://localhost:${config.VITE_API_URL}/cvi/password/forgot`, {
-              method: 'POST',
+          let response = await fetch(`${config.VITE_APP_SERVER}/cvi/password/forgot`, {
+              method: 'POST', //http://localhost:${config.VITE_API_URL}/cvi/password/forgot
               headers: {
                   'Content-Type': 'application/json'
               },
