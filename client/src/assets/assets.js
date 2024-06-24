@@ -10,8 +10,10 @@ import template6 from './T6.jpg'
 import template7 from './T7.jpg'
 import template8 from './T8.jpg'
 import template9 from './T9.jpg'
+import heroImage from './header.jpg'
 
 export const assets={
+    heroImage,
     linkedin_icon,
     facebook_icon,
     twitter_icon,

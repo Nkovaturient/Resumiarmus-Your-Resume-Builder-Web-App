@@ -3,6 +3,7 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWandMagic, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons'
+import { assets } from '../../assets/assets'
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
             <button><Link to={'/resume-templates'}>Create Resume for free <FontAwesomeIcon icon={faWandMagicSparkles}/></Link></button>
         </div>
         <div className="header-img">
-            <img src='../../../header.jpg' alt="header" />
+            <img src={assets.heroImage} alt="heroImage" />
         </div>
         </div>
   )
