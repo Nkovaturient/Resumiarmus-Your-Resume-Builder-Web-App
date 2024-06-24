@@ -74,7 +74,7 @@ app.all("*", (req,res,next)=>{
 
 app.use((err, req, res,next)=>{
     let {status, message}=err;
-    res.status(status).render('pages/error.ejs', {err});
+    res.status(status).send(message);
 })
 
 
