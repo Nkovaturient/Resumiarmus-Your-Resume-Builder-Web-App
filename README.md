@@ -6,6 +6,11 @@ curated template options, designed and developed efficiently just to make you jo
 
 ![Screenshot (286)](https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/af074bfa-1a73-444d-b4c3-068a002c95b3)
 
+## Complete video Preview
+
+https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/628f131c-fc3a-4db2-881a-5199f1445068
+
+
 
 ## 🍀Technologies Used 🧑‍💻
 
@@ -37,6 +42,8 @@ curated template options, designed and developed efficiently just to make you jo
    - web app must be registered on google dev console for client_id, secret
    - Gmail API v1 services in OAuth 2.0 playground enabled for the app to retrieve refresh token
    - Enabled APIs and Services on Google dev console
+- jsPDF library to integrate downloading user resume in PDF-
+   - passing required key : properties in new jsPDF object then adding .addImage() and .save() to finalise saving with the specified img and name.
 
 
 # To Resolve: ⏲️
