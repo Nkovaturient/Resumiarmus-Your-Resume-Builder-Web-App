@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css'
 import Header from '../../components/Header/Header';
 import Features from '../../components/Features/Features';
 import { Link } from 'react-router-dom';
 
 const Home = (props) => {
+    
 
     return(
         <div className='home' id='home'>

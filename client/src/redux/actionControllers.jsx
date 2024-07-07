@@ -196,7 +196,7 @@ export const fetchDataFailure = error => {
     }
 }
 
-export const postData = (token, resume) => {
+export const postData = (token, resume, props) => {
     //console.log(token);
 
     var base64Url = token.split('.')[1];
@@ -205,7 +205,9 @@ export const postData = (token, resume) => {
 
     const bodyData = {
         data: resume,
-        user: user
+        user: user,
+        personal: props,
+
     }
 
     return (dispatch) => {
@@ -218,10 +220,11 @@ export const postData = (token, resume) => {
                 'Content-Type': 'application/json',
                 'auth-token': token
             },
-            data: JSON.stringify(bodyData)
+            data: JSON.stringify(bodyData),
         })
             .then(response => {
                 const data = response.data
+                console.log(data);
                 dispatch(postDataSuccess(data.data))
             })
             .catch(error => {

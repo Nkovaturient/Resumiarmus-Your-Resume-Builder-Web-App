@@ -37,28 +37,26 @@ export default function ResetPassword() {
  
     const getToken = () => {
         let token = query.get("token");
-        // const tokenn=`http://localhost:${config.CLIENT_URL}/password/reset?token=${token}`
-        // console.log(tokenn, '----', token);
           return token;
       }
 
-    const verifyToken = () => {
+  //   const verifyToken = () => {
         
-        try{
-            const secret_key=config.VITE_SECRET_KEY;
+  //       try{
+  //           const secret_key=config.VITE_SECRET_KEY;
 
-        jwt.verify(getToken(), secret_key , function (err, decoded) {
-          if(err) {
-                  console.error('verification failed: ', err);
-                  enqueueSnackbar(`${err.message}`, {variant: 'warning'})
-                } else {
-                  console.log("decoded jwt:", decoded);
-                }
-        });
-    } catch(err){
-            console.log('Error generating or verifying token:', err.message);
-    }
-  }
+  //       jwt.verify(getToken(), secret_key , function (err, decoded) {
+  //         if(err) {
+  //                 console.error('verification failed: ', err);
+  //                 enqueueSnackbar(`${err.message}`, {variant: 'warning'})
+  //               } else {
+  //                 console.log("decoded jwt:", decoded);
+  //               }
+  //       });
+  //   } catch(err){
+  //           console.log('Error generating or verifying token:', err.message);
+  //   }
+  // }
 
     const clickSubmit = (event) => {
         event.preventDefault();
@@ -74,7 +72,6 @@ export default function ResetPassword() {
         token: token || undefined
     }
 
-    if (verifyToken()) {
         create(user).then((data) => {
             if (data.error) {
               console.log('data==', data)
@@ -82,24 +79,14 @@ export default function ResetPassword() {
             } else {
                 setValues({ ...values, error: '', open: true })
             }
-        })
-    } else {
-      enqueueSnackbar('Invalid token! Try after some time.', { variant: 'error' });
-        setTimeout(() => {
-            navigate("/login");
-        }, 3000);
-    }
+        }) 
 
   }catch(err){
     enqueueSnackbar(`${err.message}`, { variant: 'error' });
 
-  }
-  
-    }
+  } }
 
  
-
-
   const goto = (res) => {
       console.log("Reset result:",res);
 

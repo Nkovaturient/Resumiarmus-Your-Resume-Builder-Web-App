@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {connect} from 'react-redux'
-import { setPersonalDetails } from '../../../redux/actionControllers'
+import { setPersonalDetails, postData } from '../../../redux/actionControllers'
 import './Personal.css'
 import { useSnackbar } from 'notistack'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -133,11 +133,13 @@ const Personal = (props) => {
 const mapStateToProps = state => {
     return {
         resume: state.resume.data,
+        token: state.resume.token,
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     setPersonalDetails: (props) => { dispatch(setPersonalDetails(props)) },
+    postData: (token, resume, props) => { dispatch(postData(token, resume, props)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Personal);

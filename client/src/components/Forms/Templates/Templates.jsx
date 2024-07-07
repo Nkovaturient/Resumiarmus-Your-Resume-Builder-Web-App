@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { setTitle, updateResumeData } from '../../../redux/actionControllers';
+import { setTitle, updateResumeData, postData } from '../../../redux/actionControllers';
 import { connect } from 'react-redux';
 import customTemplates from '../../Templates/CustomTemplates'
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +54,7 @@ const Templates = (props) => {
             <input type="text" name='title' id='title' 
              onChange={handleChange}
              value={props.resume.data.title}
-             placeholder='click on the btn'
+             placeholder='enter a unique Resume Title like - resumeFrontend then choose 1 template'
               />
         </div>
         { (errorText)? <p>{errorText}</p> : ''}
@@ -80,6 +80,7 @@ const mapStateToProps= state => {
 
 const mapDispatchToProps= dispatch=> ({
     setTitle: (props) => {dispatch(setTitle(props))},
+    postData: (token, resume, props) => { dispatch(postData(token, resume, props)) },
     updateResumeData: (props) => { dispatch(updateResumeData(props)) },
 
 })

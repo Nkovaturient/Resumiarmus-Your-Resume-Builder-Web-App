@@ -58,7 +58,7 @@ const Login = (props) => {
 
         props.loginCheck(user, function (token) {
             localStorage.setItem('token', token);
-            enqueueSnackbar(" Welcome wiz! Ready to arm yourself with Resumiarmus?", { variant: 'success'});
+            enqueueSnackbar(" Welcome wiz! Ready to arm yourself with Resumiarmus!", { variant: 'success'});
             navigate("/")
         })
     }

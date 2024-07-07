@@ -88,6 +88,7 @@ export default function Signup(props) {
           return response
       } catch (err) {
           console.log(err)
+          enqueueSnackbar(`${err.message}`, {variant: 'error'})
       }
   }
 
@@ -99,13 +100,14 @@ export default function Signup(props) {
           email: values.email || undefined,
           password: values.password || undefined
       }
-      create(user).then((data) => {
-          if (data.error) {
-              setValues({ ...values, error: data.error })
-          } else {
-              setValues({ ...values, error: '', open: true })
-          }
+      create(user)
+      .then((data) => {
+            setValues({ ...values, error: '', open: true })    
+      }) 
+      .catch((err)=>{
+        setValues({ ...values, error: err.message})
       })
+    
   }
 
   return (

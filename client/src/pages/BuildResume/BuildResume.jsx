@@ -8,7 +8,7 @@ import Projects from '../../components/Forms/Projects/Projects';
 import Achievements from '../../components/Forms/Achievements/Achievements';
 import HiddenResume from '../../components/Templates/HiddenResume'
 import { connect } from 'react-redux';
-import { fetchData, postData, updateData } from '../../redux/actionControllers';
+import { fetchData, postData, updateData, setPersonalDetails } from '../../redux/actionControllers';
 import { jsPDF } from 'jspdf'
 import Templates from '../../components/Forms/Templates/Templates';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,7 @@ const BuildResume = (props) => {
 
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
+    const [loading, setLoading]=useState(false);
     const [activeStep, setActiveStep] = useState(0);
 
     const token = props.token;
@@ -83,15 +84,13 @@ const BuildResume = (props) => {
             enqueueSnackbar('Downloaded! Cast your Resume PDF. All the Best! ', { variant: 'success' });
             setTimeout(() => {
                 enqueueSnackbar('Your saved Resumes might take some time to reflect. ', { variant: 'info' });
-                navigate('/dashboard'); 
+                navigate('/dashboard', props.resume); 
             }, 3000);
             
         }
     };
 
     const clickSave = (event) => {
-
-        if (event)
             event.preventDefault();
         // enqueueSnackbar(' Your resume is ready! Click to download PDF! ', { variant: 'success' });
 
@@ -100,6 +99,7 @@ const BuildResume = (props) => {
             enqueueSnackbar('Hurrayy! Your resume is updated! Click to download PDF!', { variant: 'success' });
         }
         else if (token) {
+            
             props.postData(token, props.resume)
         }
         else {
