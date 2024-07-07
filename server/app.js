@@ -11,6 +11,7 @@ import env from 'dotenv';
 env.config();
 
 const app = express();
+const PORT= process.env.PORT || 5600  ;
 import session from 'express-session';
 import ExpressError from './utils/ExpressError.js';
 
@@ -22,7 +23,7 @@ main()
 .then(() => {
     console.log('Pinged to Database. Connected Successfully! ');
     app.listen(process.env.PORT, () => {
-        console.log(`Listening on port ${process.env.PORT}...`);
+        console.log(`Listening on port ${PORT}...`);
     });
 }).catch(err => {
     console.error(err);
@@ -61,7 +62,7 @@ const sessionOptions= {
 app.use(session(sessionOptions));
 
 app.use('/cvi', authRoutes);
-app.use('/cvi/dashboard', verifyToken, dashboardRoute);
+app.use('/cvi/dashboard',  dashboardRoute);
 
 app.get("/home", (req,res)=>{
     res.send("Cast Resumiarmus on your nxt opponent!");

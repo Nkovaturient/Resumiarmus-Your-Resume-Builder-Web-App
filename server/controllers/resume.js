@@ -27,13 +27,31 @@ export const getMany=async(req,res)=>{
 }
 
 export const createOne=async(req,res)=>{
-    const createdBy = req.body.user.id;
+    const createdBy = req.body.user?.id;
     try {
-      const doc = await Resume.create({ ...req.body.data, createdBy }); //data from form
-      res.status(201).json({ data: doc });
+      if(!req.body.data){
+        return res.status(402).json({ error : 'data is missing!'})
+      }
+
+      const saveResume= new Resume.create({
+        ...req.body.data, 
+        createdBy
+      })
+      // saveResume.personal={ ...req.body.personal }
+      
+      console.log(saveResume);
+
+      //checking validation err
+      const validationError = saveResume.validateSync();
+    if (validationError) {
+      throw validationError;
+    }
+      const doc = await saveResume.save(); //data from form
+      res.status(201).json({ data: saveResume });
+
     } catch (e) {
-      console.error(e);
-      res.status(400).end();
+      console.error(e.message, e.stack);
+      res.status(500).end();
     }
 }
 

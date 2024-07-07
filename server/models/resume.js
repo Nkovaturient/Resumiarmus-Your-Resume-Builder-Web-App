@@ -173,15 +173,15 @@ const resumeSchema= new mongoose.Schema({
     }
 }, { timestamps: true } );
 
-resumeSchema.index(
-    {
-        user: 1,
-        title:1
-    },
-    {
-        unique: true,
-    }
-);
+// resumeSchema.index(
+//     {
+//         user: 1,
+//         title:1
+//     },
+//     {
+//         unique: true,
+//     }
+// );
 
 const Resume=mongoose.model("Resume", resumeSchema);
 
