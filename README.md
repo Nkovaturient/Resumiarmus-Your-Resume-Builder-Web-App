@@ -9,8 +9,7 @@ curated template options, designed and developed efficiently just to make you jo
 ## Complete video Preview
 
 https://github.com/Nkovaturient/Resumiarmus-Your-Resume-Builder-Web-App/assets/127786136/628f131c-fc3a-4db2-881a-5199f1445068
-
-
+(Deploying soon! ⏲️⏳)
 
 ## 🍀Technologies Used 🧑‍💻
 
