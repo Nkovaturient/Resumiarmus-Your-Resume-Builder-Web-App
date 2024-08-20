@@ -8,12 +8,11 @@
 
 
 
-
-
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
+import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
+import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 
 export default defineConfig({
   plugins: [
