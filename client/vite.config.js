@@ -10,21 +10,25 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import nodePolyfills from 'rollup-plugin-polyfill-node';
+import inject from '@rollup/plugin-inject';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import nodePolyfills from 'rollup-plugin-node-polyfills';  // Updated plugin
 
 export default defineConfig({
   plugins: [
     react(),
-    nodePolyfills(),  // This will handle Node.js built-ins like stream and crypto
+    inject({
+      util: 'util',
+      process: 'process',
+    }),
+    nodePolyfills(),  // Updated to a more reliable plugin
   ],
   optimizeDeps: {
     esbuildOptions: {
       define: {
         global: 'globalThis',
       },
-      // Polyfill buffer and process during development
       plugins: [
         NodeGlobalsPolyfillPlugin({
           buffer: true,
@@ -36,18 +40,17 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // Use polyfills provided by rollup-plugin-polyfill-node
-      stream: 'rollup-plugin-polyfill-node/polyfills/stream',
-      util: 'rollup-plugin-polyfill-node/polyfills/util',
-      buffer: 'rollup-plugin-polyfill-node/polyfills/buffer',
-      crypto: 'rollup-plugin-polyfill-node/polyfills/crypto',
-      process: 'rollup-plugin-polyfill-node/polyfills/process',
+      util: 'rollup-plugin-node-polyfills/polyfills/util',
+      stream: 'rollup-plugin-node-polyfills/polyfills/stream',
+      buffer: 'rollup-plugin-node-polyfills/polyfills/buffer',
+      crypto: 'rollup-plugin-node-polyfills/polyfills/crypto',
+      process: 'rollup-plugin-node-polyfills/polyfills/process',
     },
   },
   build: {
     rollupOptions: {
       plugins: [
-        nodePolyfills(), // Ensure this plugin is included during the build
+        nodePolyfills(),  // Ensures polyfills during the build
       ],
     },
   },
