@@ -22,6 +22,7 @@ import {NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill
 export default defineConfig({
   plugins: [
     react(),
+    builtins(),
     inject({
       util: 'util',
       //inject Buffer as global variable
@@ -45,7 +46,7 @@ export default defineConfig({
   resolve: {
     alias: {
       util: 'rollup-plugin-node-builtins/polyfills/util',
-      // stream: 'rollup-plugin-node-builtins/polyfills/stream',
+      stream: 'rollup-plugin-node-builtins/polyfills/stream',
       // buffer: 'rollup-plugin-node-builtins/polyfills/buffer',
       process: 'process/browser'
 

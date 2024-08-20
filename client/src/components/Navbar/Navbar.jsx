@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faWandMagic, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
+
 
 const Navbar = (props) => {
 
   const[menu, setMenu]= useState('home');
  const [menuOpen, setMenuOpen] = useState(false);
+ 
 
 const toggleMenu = () => {
     setMenuOpen(!menuOpen);

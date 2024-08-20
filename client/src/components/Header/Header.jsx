@@ -12,7 +12,7 @@ const Header = () => {
             <p>Boost your career chasing</p>
             <h3>Land your dream job with already made <span>Eye catchy Resumes.</span></h3>
             <p>Create awesome job-tailored resumes with one of our template in just few seconds.</p>
-            <button><Link to={'/resume-templates'}>Create Resume for free <FontAwesomeIcon icon={faWandMagicSparkles}/></Link></button>
+            <Link className='btn' to={'/resume-templates'}>Create Resume for free <FontAwesomeIcon icon={faWandMagicSparkles}/></Link>
         </div>
         <div className="header-img">
             <img src={assets.heroImage} alt="heroImage" />
