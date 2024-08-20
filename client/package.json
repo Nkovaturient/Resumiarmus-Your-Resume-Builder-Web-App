@@ -20,6 +20,7 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.4.5",
     "formik": "^2.4.6",
     "html2canvas": "^1.4.1",

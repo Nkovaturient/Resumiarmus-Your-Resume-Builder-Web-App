@@ -7,7 +7,6 @@
 // })
 
 
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import inject from '@rollup/plugin-inject';
@@ -40,17 +39,18 @@ export default defineConfig({
       util: 'rollup-plugin-node-polyfills/polyfills/util',
       stream: 'stream-browserify',
       buffer: 'rollup-plugin-node-polyfills/polyfills/buffer',
-      crypto: 'rollup-plugin-node-polyfills/polyfills/crypto',
+      crypto: 'crypto-browserify', // Updated alias for crypto
       process: 'process/browser',
     },
   },
   build: {
     rollupOptions: {
       plugins: [
-        // Remove nodePolyfills since we are using specific packages for polyfills
+        // Polyfills are handled directly via alias
       ],
     },
   },
 });
+
 
 
