@@ -11,45 +11,46 @@
 
 
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import inject from '@rollup/plugin-inject'
-import builtins from 'rollup-plugin-node-builtins';
-import { NodeGlobalsPolyfillPlugin} from '@esbuild-plugins/node-globals-polyfill';
-import {NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import nodePolyfills from 'rollup-plugin-polyfill-node';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    builtins(),
-    inject({
-      util: 'util',
-      //inject Buffer as global variable
-      // Buffer:['buffer', 'Buffer'],
-      process: 'process'
-    }),
+    nodePolyfills(),  // This will handle Node.js built-ins like stream and crypto
   ],
   optimizeDeps: {
-    esbuildOptions:{
+    esbuildOptions: {
       define: {
-        global: 'globalThis'
+        global: 'globalThis',
       },
+      // Polyfill buffer and process during development
       plugins: [
         NodeGlobalsPolyfillPlugin({
-          buffer: true
+          buffer: true,
+          process: true,
         }),
-        NodeModulesPolyfillPlugin()
-      ]
-    }
+        NodeModulesPolyfillPlugin(),
+      ],
+    },
   },
   resolve: {
     alias: {
-      util: 'rollup-plugin-node-builtins/polyfills/util',
-      stream: 'rollup-plugin-node-builtins/polyfills/stream',
-      // buffer: 'rollup-plugin-node-builtins/polyfills/buffer',
-      process: 'process/browser'
-
-    }
-  }
+      // Use polyfills provided by rollup-plugin-polyfill-node
+      stream: 'rollup-plugin-polyfill-node/polyfills/stream',
+      util: 'rollup-plugin-polyfill-node/polyfills/util',
+      buffer: 'rollup-plugin-polyfill-node/polyfills/buffer',
+      crypto: 'rollup-plugin-polyfill-node/polyfills/crypto',
+      process: 'rollup-plugin-polyfill-node/polyfills/process',
+    },
+  },
+  build: {
+    rollupOptions: {
+      plugins: [
+        nodePolyfills(), // Ensure this plugin is included during the build
+      ],
+    },
+  },
 });
+
