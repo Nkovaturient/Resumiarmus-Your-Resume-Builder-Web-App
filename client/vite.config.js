@@ -13,7 +13,6 @@ import react from '@vitejs/plugin-react';
 import inject from '@rollup/plugin-inject';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-import nodePolyfills from 'rollup-plugin-node-polyfills';  // Updated plugin
 
 export default defineConfig({
   plugins: [
@@ -22,7 +21,6 @@ export default defineConfig({
       util: 'util',
       process: 'process',
     }),
-    nodePolyfills(),  // Updated to a more reliable plugin
   ],
   optimizeDeps: {
     esbuildOptions: {
@@ -32,7 +30,6 @@ export default defineConfig({
       plugins: [
         NodeGlobalsPolyfillPlugin({
           buffer: true,
-          process: true,
         }),
         NodeModulesPolyfillPlugin(),
       ],
@@ -41,18 +38,19 @@ export default defineConfig({
   resolve: {
     alias: {
       util: 'rollup-plugin-node-polyfills/polyfills/util',
-      stream: 'rollup-plugin-node-polyfills/polyfills/stream',
+      stream: 'stream-browserify',
       buffer: 'rollup-plugin-node-polyfills/polyfills/buffer',
       crypto: 'rollup-plugin-node-polyfills/polyfills/crypto',
-      process: 'rollup-plugin-node-polyfills/polyfills/process',
+      process: 'process/browser',
     },
   },
   build: {
     rollupOptions: {
       plugins: [
-        nodePolyfills(),  // Ensures polyfills during the build
+        // Remove nodePolyfills since we are using specific packages for polyfills
       ],
     },
   },
 });
+
 

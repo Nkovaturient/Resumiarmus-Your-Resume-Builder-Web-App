@@ -38,6 +38,7 @@
     "rollup-plugin-node-polyfills": "^0.2.1",
     "rollup-plugin-polyfill-node": "^0.13.0",
     "safe-buffer": "^5.2.1",
+    "stream-browserify": "^3.0.0",
     "web-vitals": "^4.0.1"
   },
   "devDependencies": {
