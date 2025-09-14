@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.5",
     "@rollup/plugin-inject": "^5.0.5",
-    "axios": "^1.7.2",
+    "axios": "^1.12.0",
     "bootstrap": "^5.3.3",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
